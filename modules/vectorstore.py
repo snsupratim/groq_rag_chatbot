@@ -28,10 +28,14 @@ def load_vectorstore(uploaded_files):
         vectorstore.persist()
     else:
         # Create new
+        # vectorstore = Chroma.from_documents(
+        #     documents=texts,
+        #     embedding=embeddings,
+        #     persist_directory=PERSIST_DIR
+        # )
         vectorstore = Chroma.from_documents(
-            documents=texts,
-            embedding=embeddings,
-            persist_directory=PERSIST_DIR
+        documents=texts,
+        embedding=embeddings
         )
         vectorstore.persist()
 
