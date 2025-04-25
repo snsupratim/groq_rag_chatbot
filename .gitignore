@@ -1,3 +1,4 @@
 .env
 myenv
 chroma_store
+.streamlit/secrets.toml
