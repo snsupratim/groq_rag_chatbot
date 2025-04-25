@@ -5,8 +5,7 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from modules.pdf_handler import save_uploaded_files
 import os
 
-PERSIST_DIR = os.path.join("/mount/tmp", "chroma_store")
-
+PERSIST_DIR = "./chroma_store"
 
 def load_vectorstore(uploaded_files):
     paths = save_uploaded_files(uploaded_files)
@@ -28,14 +27,10 @@ def load_vectorstore(uploaded_files):
         vectorstore.persist()
     else:
         # Create new
-        # vectorstore = Chroma.from_documents(
-        #     documents=texts,
-        #     embedding=embeddings,
-        #     persist_directory=PERSIST_DIR
-        # )
         vectorstore = Chroma.from_documents(
-        documents=texts,
-        embedding=embeddings
+            documents=texts,
+            embedding=embeddings,
+            persist_directory=PERSIST_DIR
         )
         vectorstore.persist()
 
